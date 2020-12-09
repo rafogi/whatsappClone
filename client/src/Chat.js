@@ -34,8 +34,26 @@ const Chat = () => {
           <span className="chat__timestamp">
             {new Date().toLocaleString()}
           </span>
+        </p>
 
+        <p className="chat__message chat__receiver">
+          <span className="chat__name">
+            Raffy
+          </span>
+          hello world
+          <span className="chat__timestamp">
+            {new Date().toLocaleString()}
+          </span>
+        </p>
 
+        <p className="chat__message">
+          <span className="chat__name">
+            Raffy
+          </span>
+          hello world
+          <span className="chat__timestamp">
+            {new Date().toLocaleString()}
+          </span>
         </p>
       </div>
     </div>
