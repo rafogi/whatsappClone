@@ -18,7 +18,7 @@
   min-width: 10vw;
 }
 
-.sidebar__headerRight  .MuiSvgIcon-root {
+.sidebar__headerRight > .MuiSvgIcon-root {
   margin-right: 1vw;
   font-size: 20px !important;
 }
