@@ -30,7 +30,7 @@ const Chat = () => {
           <span className="chat__name">
             Raffy
           </span>
-          hello world
+          hello Anna
           <span className="chat__timestamp">
             {new Date().toLocaleString()}
           </span>
@@ -40,7 +40,7 @@ const Chat = () => {
           <span className="chat__name">
             Raffy
           </span>
-          hello world
+          wutsup?
           <span className="chat__timestamp">
             {new Date().toLocaleString()}
           </span>
@@ -50,7 +50,7 @@ const Chat = () => {
           <span className="chat__name">
             Raffy
           </span>
-          hello world
+          #teamDosan
           <span className="chat__timestamp">
             {new Date().toLocaleString()}
           </span>
