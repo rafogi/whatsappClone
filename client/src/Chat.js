@@ -4,6 +4,7 @@ import "./Chat.css"
 import { AttachFile, InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons"
 import MicIcon from '@material-ui/icons/Mic';
 import axios from "./axios";
+import timeSince from "./helper";
 
 const Chat = ({ messages }) => {
   const [input,setInput] = useState("");
@@ -13,7 +14,7 @@ const Chat = ({ messages }) => {
     await axios.post('/messages/new', {
       "message": input,
       "name": "Me",
-      "timestamp": "Just now",
+      "timestamp": Date.now(),
       "received": false,
     });
   };
@@ -43,7 +44,7 @@ const Chat = ({ messages }) => {
             <span className="chat__name">{message.name}</span>
             {message.message}
             <span className="chat__timestamp">
-              {message.timestamp}
+              {timeSince(message.timestamp)}
             </span>
           </p>
         )}
