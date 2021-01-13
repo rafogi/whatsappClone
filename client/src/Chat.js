@@ -4,7 +4,7 @@ import "./Chat.css"
 import { AttachFile, InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons"
 import MicIcon from '@material-ui/icons/Mic';
 
-const Chat = () => {
+const Chat = ({ messages }) => {
   return (
     <div className="chat">
       <div className="chat__header">
@@ -26,6 +26,15 @@ const Chat = () => {
         </div>
       </div>
       <div className="chat__body">
+        {messages.map((message) =>
+          <p className={`chat__message ${message.received && "chat__receiver"}`}>
+            <span className="chat__name">{message.name}</span>
+            {message.message}
+            <span className="chat__timestamp">
+              {message.timestamp}
+            </span>
+          </p>
+        )}
         <p className="chat__message">
           <span className="chat__name">
             Raffy
