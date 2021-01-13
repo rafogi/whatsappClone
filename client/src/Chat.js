@@ -1,10 +1,22 @@
 import { Avatar, IconButton } from '@material-ui/core';
-import React from 'react';
+import React, {useState}from 'react';
 import "./Chat.css"
 import { AttachFile, InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons"
 import MicIcon from '@material-ui/icons/Mic';
+import axios from "./axios";
 
 const Chat = ({ messages }) => {
+  const [input,setInput] = useState("");
+
+  const sendMessage =async (e) => {
+    e.preventDefault();
+    await axios.post('/messages/new', {
+      "message": input,
+      "name": "Me",
+      "timestamp": "Just now",
+      "received": false,
+    });
+  };
   return (
     <div className="chat">
       <div className="chat__header">
@@ -35,48 +47,20 @@ const Chat = ({ messages }) => {
             </span>
           </p>
         )}
-        <p className="chat__message">
-          <span className="chat__name">
-            Raffy
-          </span>
-          hello Anna
-          <span className="chat__timestamp">
-            {new Date().toLocaleString()}
-          </span>
-        </p>
 
-        <p className="chat__message chat__receiver">
-          <span className="chat__name">
-            Raffy
-          </span>
-          wutsup?
-          <span className="chat__timestamp">
-            {new Date().toLocaleString()}
-          </span>
-        </p>
-
-        <p className="chat__message">
-          <span className="chat__name">
-            Raffy
-          </span>
-          #teamDosan
-          <span className="chat__timestamp">
-            {new Date().toLocaleString()}
-          </span>
-        </p>
       </div>
 
       <div className="chat__footer">
         <InsertEmoticon />
         <form>
           <input
-            // value={input}
-            // onChange={(e) => setInput(e.target.value)}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             placeholder="Type a message"
             type="text"
           />
           <button
-            // onClick={sendMessage}
+            onClick={sendMessage}
             type="submit">
             Send a message
           </button>

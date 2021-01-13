@@ -7,8 +7,8 @@ const SidebarChat = () => {
     <div className="sidebarChat">
       <Avatar/>
       <div className="sidebarChat__info">
-        <h2>room name</h2>
-        <p>this is the last message</p>
+        <h2>roomname</h2>
+        <p>just another room</p>
       </div>
     </div>
   );
