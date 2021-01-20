@@ -55,7 +55,6 @@ db.once('open', () => {
   });
 });
 
-app.get('/', (req, res) => res.status(200).send('hello world'));
 
 app.get('/messages/sync', (req, res) => {
   Message.find((err, data) => {
