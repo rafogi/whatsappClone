@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js",
     "build": "cd client && npm run build",
@@ -17,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^8.2.3",
+    "module": "^1.2.5",
     "mongoose": "^5.11.10",
     "pusher": "^4.0.2"
   },
