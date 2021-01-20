@@ -23,7 +23,7 @@ const connection_url = 'mongodb+srv://admin:admin@cluster0.qyu7u.mongodb.net/wha
 
 app.use(express.json());
 
-mongoose.connect(connection_url, {
+mongoose.connect(process.env.MONGODB_URI || connection_url, {
   useCreateIndex: true,
   useNewUrlPareser: true,
   useUnifiedToplogy: true
@@ -78,7 +78,14 @@ app.post('/messages/new', (req, res) => {
       res.status(201).send(`new message created: \n ${data}`)
     }
   })
-})
+});
+
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
+}
 
 app.listen(port, () => console.log(`listening on localhost:${port}`))
 
