@@ -3,20 +3,22 @@ import React, {useState}from 'react';
 import "./Chat.css"
 import { AttachFile, InsertEmoticon, MoreVert, SearchOutlined } from "@material-ui/icons"
 import MicIcon from '@material-ui/icons/Mic';
-import axios from "./axios";
+import axios from "axios";
 import timeSince from "./helper";
+import { reset } from 'nodemon';
 
 const Chat = ({ messages }) => {
   const [input,setInput] = useState("");
 
-  const sendMessage =async (e) => {
+  const sendMessage = (e) => {
     e.preventDefault();
-    await axios.post('/messages/new', {
+    axios.post('/messages/new', {
       "message": input,
       "name": "Me",
       "timestamp": Date.now(),
       "received": true,
     });
+        setInput('')
   };
   return (
     <div className="chat">
@@ -53,10 +55,12 @@ const Chat = ({ messages }) => {
 
       <div className="chat__footer">
         <InsertEmoticon />
-        <form>
+        <form >
           <input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => 
+              setInput(e.target.value)
+            }
             placeholder="Type a message"
             type="text"
           />
