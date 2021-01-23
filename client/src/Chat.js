@@ -18,7 +18,7 @@ const Chat = ({ messages }) => {
       "timestamp": Date.now(),
       "received": true,
     });
-        setInput('')
+     setInput('')
   };
   return (
     <div className="chat">
